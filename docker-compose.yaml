@@ -1,0 +1,34 @@
+version: "3.4"
+services:
+  notarizer:
+    image: notarizer:${TAG}
+    build:
+      context: .
+      target: notarizer
+  unit-tests:
+    image: notarizer-unit-tests:${TAG}
+    build:
+      context: .
+      target: unit-tests
+  lint:
+    image: notarizer-unit-tests:${TAG}
+    build:
+      context: .
+      target: unit-tests
+    command:
+      - pylint
+      - --max-line-length
+      - '120'
+      - -d
+      - 'missing-module-docstring,missing-class-docstring,missing-function-docstring'
+      - notarizer
+  codestyle:
+    image: notarizer-unit-tests:${TAG}
+    build:
+      context: .
+      target: unit-tests
+    command:
+      - pycodestyle
+      - --max-line-length
+      - '120'
+      - notarizer

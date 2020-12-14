@@ -1,0 +1,5 @@
+*
+!/notarizer
+!/private-key.pem
+!/public-key.pem
+!/requirements.txt
