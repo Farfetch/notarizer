@@ -137,3 +137,6 @@ dmypy.json
 
 # IDE related files
 .vscode/
+
+# Dependencies
+Pipfile*
