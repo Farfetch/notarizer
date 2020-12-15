@@ -1,11 +1,27 @@
 from setuptools import find_packages, setup
+from os import getenv
+from datetime import datetime
+
+MAJOR = '0'
+MINOR = '1'
+PATCH = datetime.now().timetuple().tm_yday
+BRANCH = getenv('CURRENT_BRANCH')
+BUILD_ID = getenv('BUILD_ID')
+
+def get_version(major, minor, patch, branch, build_id):
+    version_core = f'{major}.{minor}.{patch}'
+    if branch == 'main':
+        return version_core
+
+    return f'{version_core}-beta-{build_id}'
+
 
 setup_requirements = ["wheel"]
 test_requirements = []
 
 setup(
     name='notarizer',
-    version="0.0.1b0",
+    version=get_version(MAJOR, MINOR, PATCH, BRANCH, BUILD_ID),
     url="https://github.com/Farfetch/notarizer.git",
     license="MIT License (MIT)",
     include_package_data=True,
