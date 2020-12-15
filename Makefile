@@ -1,4 +1,4 @@
-.PHONY: build unit-tests lint codestyle clean open verify sign
+.PHONY: build unit-tests lint codestyle clean
 
 build:
 	@docker-compose up --build --no-start
