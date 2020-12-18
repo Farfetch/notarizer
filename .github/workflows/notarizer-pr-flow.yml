@@ -32,7 +32,8 @@ jobs:
       id: get_version
       run: |
         echo "RELEASE_VERSION=${GITHUB_REF/refs\/tags\/releases\//}" >> $GITHUB_ENV
-        echo $RELEASE_VERSION
+    - name: Test
+      run: echo $RELEASE_VERSION
     - name: Dependencies
       run: |
         make install-dev
