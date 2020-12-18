@@ -1,7 +1,9 @@
 name: Build and Publish notarizer to PyPI
 
 on:
-
+  push:
+    tags:
+      - 'releases-beta/[1-9]+.[0-9]+.[0-9]+'
   pull_request:
     branches:
       - main
@@ -31,7 +33,7 @@ jobs:
     - name: Get the version
       id: get_version
       run: |
-        echo "RELEASE_VERSION=${GITHUB_REF/refs\/tags\/releases\//}" >> $GITHUB_ENV
+        echo "RELEASE_VERSION=${GITHUB_REF##refs/tags/}" >> $GITHUB_ENV
     - name: Test
       run: echo $RELEASE_VERSION
     - name: Dependencies
