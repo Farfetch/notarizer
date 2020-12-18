@@ -3,7 +3,7 @@ name: Build and Publish notarizer to PyPI
 on:
   push:
     tags:
-      - 'releases-beta/[1-9]+.[0-9]+.[0-9]+'
+      - 'releases-beta/[1-9]+.[0-9]+.[0-9]+b'
   pull_request:
     branches:
       - main
