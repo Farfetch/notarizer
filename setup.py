@@ -12,7 +12,12 @@ setup(
     url="https://github.com/Farfetch/notarizer.git",
     license="MIT License (MIT)",
     include_package_data=True,
-    packages=find_packages(exclude=["notarizer/test"]),
+    packages=find_packages(exclude=["notarizer/test"]),    
+    entry_points={
+        'console_scripts': [
+            'notarizer = notarizer.cli:main'
+        ]
+    },
     setup_requires=setup_requirements,
     install_requires=open('requirements.txt').read().splitlines(),
     author="Farfetch",
